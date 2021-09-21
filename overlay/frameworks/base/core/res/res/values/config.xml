@@ -83,4 +83,83 @@
         <item>7</item>
     </integer-array>
 
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
+    <!--  Whether Multiuser UI should be shown -->
+    <bool name="config_enableMultiUserUI">true</bool>
+    
+    <!-- Flag indicating that the media framework should support playing of sounds on volume
+         key usage.  This adds noticeable additional overhead to volume key processing, so
+         is disableable for products for which it is irrelevant. -->
+    <bool name="config_useVolumeKeySounds">false</bool>
+
+    <!-- Disable AUDIO_BECOMING_NOISY notifications. -->
+    <bool name="config_sendAudioBecomingNoisy">false</bool>
+
+    <!-- Control the behavior when the user short presses the power button.
+            0 - Nothing
+            1 - Go to sleep (doze)
+            2 - Really go to sleep (don't doze)
+            3 - Really go to sleep and go home (don't doze)
+            4 - Go to home
+            5 - Dismiss IME if shown. Otherwise go to home
+    -->
+    <integer name="config_shortPressOnPowerBehavior">0</integer>
+    
+    <bool name="config_enableAutoPowerModes">false</bool>
+    
+    <bool translatable="false" name="config_enableAutoSuspend">false</bool>
+
+    <integer name="config_minimumScreenOffTimeout">50000</integer>
+    
+    <bool name="config_safe_media_volume_enabled">false</bool>
+
+    <bool name="config_safe_media_disable_on_volume_up">false</bool>
+    
+    <bool name="config_smart_battery_available">false</bool>
+
+    <bool name="config_supportAutoRotation">false</bool>
+
+    <bool name="config_allowAllRotations">true</bool>
+
+    <bool name="config_intrusiveBatteryLed">false</bool>
+
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+
+    <!-- gestures -->
+    <bool name="config_volumeHushGestureEnabled">false</bool>
+
+    <bool name="config_cameraDoubleTapPowerGestureEnabled">false</bool>
+
+    <string-array translatable="false" name="config_globalActionsList">
+        <item>lockdown</item>
+        <item>power</item>
+        <item>restart</item>
+        <item>logout</item>
+        <item>screenshot</item>
+    </string-array>
+
+    <bool name="config_use16BitTaskSnapshotPixelFormat">true</bool>
+    <item name="config_lowResTaskSnapshotScale" format="float" type="dimen">0.3</item>
+
+    <!-- If true, then we do not ask user for permission for apps to connect to USB devices.
+         Do not set this to true for production devices. Doing so will cause you to fail CTS. -->
+    <bool name="config_disableUsbPermissionDialogs">true</bool>
+
+        <!-- Whether WiFi display is supported by this device.
+         There are many prerequisites for this feature to work correctly.
+         Here are a few of them:
+         * The WiFi radio must support WiFi P2P.
+         * The WiFi radio must support concurrent connections to the WiFi display and
+           to an access point.
+         * The Audio Flinger audio_policy.conf file must specify a rule for the "r_submix"
+           remote submix module.  This module is used to record and stream system
+           audio output to the WiFi display encoder in the media server.
+         * The remote submix module "audio.r_submix.default" must be installed on the device.
+         * The device must be provisioned with HDCP keys (for protected content).
+    -->
+    <bool name="config_enableWifiDisplay">true</bool>
+
 </resources>

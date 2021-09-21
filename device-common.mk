@@ -22,6 +22,7 @@ ifeq ($(TARGET_USE_TABLET_LAUNCHER), true)
 # Setup tablet build
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+PRODUCT_CHARACTERISTICS := tablet
 else
 # Setup TV Build
 USE_OEM_TV_APP := true
@@ -158,7 +159,7 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhwbinder 
 
-PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=320
+PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=180
 
 PRODUCT_PACKAGES +=  libGLES_mali
 PRODUCT_PACKAGES +=  libGLES_android
@@ -215,10 +216,15 @@ PRODUCT_PACKAGES += \
 #
 PRODUCT_PACKAGES += \
     hwcomposer.drm_meson \
-    android.hardware.drm@1.3-impl \
-    android.hardware.drm@1.3-service \
-    android.hardware.drm@1.3-service.widevine \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/binaries/drm/vendor/lib/mediadrm/libwvdrmengine.so:$(TARGET_COPY_OUT_VENDOR)/lib/mediadrm/libwvdrmengine.so \
+    $(LOCAL_PATH)/binaries/drm/vendor/bin/hw/android.hardware.drm@1.3-service.widevine:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.drm@1.3-service.widevine \
+    $(LOCAL_PATH)/binaries/drm/vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.drm@1.3-service.widevine.rc \
+    $(LOCAL_PATH)/binaries/drm/vendor/lib64/libwvhidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libwvhidl.so
 
 # CEC
 PRODUCT_PACKAGES += \
@@ -227,10 +233,12 @@ PRODUCT_PACKAGES += \
     hdmi_cec.yukawa
 
 PRODUCT_PROPERTY_OVERRIDES += ro.hdmi.device_type=4 \
-    persist.sys.hdmi.keep_awake=false
+    persist.sys.hdmi.keep_awake=true
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/input/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl \
+    $(LOCAL_PATH)/input/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
+
+#PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml
 
 PRODUCT_PACKAGES += \
@@ -332,7 +340,7 @@ AUDIO_DEFAULT_OUTPUT ?= speaker
 ifeq ($(AUDIO_DEFAULT_OUTPUT),hdmi)
 PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/audio/audio_policy_configuration_hdmi_only.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
-DEVICE_PACKAGE_OVERLAYS += \
+#DEVICE_PACKAGE_OVERLAYS += \
     device/amlogic/yukawa/hal/audio/overlay_hdmi_only
 else
 PRODUCT_COPY_FILES += \
@@ -345,8 +353,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml
 
 # Enable BT Pairing with button BTN_0 (key 256)
-PRODUCT_PACKAGES += YukawaService YukawaAndroidOverlay
-PRODUCT_COPY_FILES += \
+##PRODUCT_PACKAGES += YukawaService YukawaAndroidOverlay
+#PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/input/Vendor_0001_Product_0001.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0001_Product_0001.kl
 
 
@@ -361,5 +369,43 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
 PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+
+include vendor/microg/microg.mk
+VENDOR_EXCEPTION_PATHS += \
+    microg
+
+# gps
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
+
+PRODUCT_PACKAGES += \
+    gps.yukawa
+
+PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
+
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=ondemand
+
+# Additional apps
+PRODUCT_PACKAGES += \
+    OmniSwitch \
+    OmniJaws \
+    MatLog \
+    OmniChange \
+    WallpaperCropper2 \
+    OmniRemote \
+    ThemePicker \
+    DeviceParts
+
+# Additional tools
+PRODUCT_PACKAGES += \
+    vim \
+    vncflinger \
+    vncpasswd
+
 # Include Virtualization APEX
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
+#$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)

@@ -83,7 +83,7 @@ endif
 BOARD_DB_DYNAMIC_PARTITIONS_SIZE := 2411724800  # Reserve 4M for DAP metadata
 BOARD_SUPER_PARTITION_METADATA_DEVICE := super
 BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
-
+BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 67108864
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -159,14 +159,16 @@ BOARD_SEPOLICY_DIRS += \
 
 DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest.xml
 
-ifneq ($(TARGET_KERNEL_USE), 4.19)
-DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest_kernel5.xml
-endif
+#ifneq ($(TARGET_KERNEL_USE), 4.19)
+#DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest_kernel5.xml
+#endif
 DEVICE_MATRIX_FILE := device/amlogic/yukawa/compatibility_matrix.xml
 
 ifneq ($(TARGET_SENSOR_MEZZANINE),)
 DEVICE_MANIFEST_FILE += device/amlogic/yukawa/sensorhal/manifest.xml
 endif
 
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # Generate an APEX image for experiment b/119800099.
-DEXPREOPT_GENERATE_APEX_IMAGE := true
+#DEXPREOPT_GENERATE_APEX_IMAGE := true

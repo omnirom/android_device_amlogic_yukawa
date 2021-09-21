@@ -24,6 +24,12 @@ on zygote-start
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
+    # Create directories for Location services
+    mkdir /data/vendor/location 0770 gps gps
+
+    # vnc
+    chmod 0666 /dev/uinput
+
 service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
      -g@android:wpa_wlan0
      interface android.hardware.wifi.supplicant@1.0::ISupplicant default
@@ -37,3 +43,8 @@ service bugreport /system/bin/dumpstate -d -p -z
     class main
     disabled
     oneshot
+    
+# cpufreq tuning
+on property:persist.vendor.cpufreq.governor=*
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ${persist.vendor.cpufreq.governor}
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ${persist.vendor.cpufreq.governor}
