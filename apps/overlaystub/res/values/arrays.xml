@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes">
+        <item>default</item>
+        <item>omni</item>
+        <item>space</item>
+        <item>red</item>
+        <item>nature</item>
+    </string-array>
+</resources>

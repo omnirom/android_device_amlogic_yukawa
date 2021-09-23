@@ -2,6 +2,10 @@ ifndef TARGET_KERNEL_USE
 TARGET_KERNEL_USE=5.4-mod
 endif
 
+ifndef TARGET_USE_TABLET_LAUNCHER
+TARGET_USE_TABLET_LAUNCHER=true
+endif
+
 $(call inherit-product, device/amlogic/yukawa/device-common.mk)
 
 ifeq ($(TARGET_VIM3), true)

@@ -1,0 +1,80 @@
+<!--
+/**
+ * Copyright (c) 2019, The Android Open Source Project
+ *                     Bootleggers ROM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="theme_name_default">Default</string>
+    <string name="theme_title_default">@string/theme_name_default</string>
+
+    <!-- Values to declare accents, there aren't themes. -->
+    <string name="theme_name_omni">Omni</string>
+    <string name="theme_title_omni">@string/theme_name_omni</string>
+    <string name="theme_overlay_color_omni">com.android.theme.color.omni</string>
+    <string name="theme_overlay_icon_android_omni">com.android.theme.icon_pack.circular.android</string>
+    <string name="theme_overlay_icon_launcher_omni">com.android.theme.icon_pack.circular.launcher</string>
+    <string name="theme_overlay_icon_settings_omni">com.android.theme.icon_pack.circular.settings</string>
+    <string name="theme_overlay_icon_sysui_omni">com.android.theme.icon_pack.circular.systemui</string>
+    <string name="theme_overlay_shape_omni">com.android.theme.icon.circle</string>
+    <string name="theme_wallpaper_title_omni">Omni</string>
+    <string name="theme_wallpaper_attribution_omni">OmniROM</string>
+    <string name="theme_wallpaper_action_omni">https://www.omnirom.org/</string>
+    <!--<string name="theme_header_omni">omni_header</string>-->
+
+    <string name="theme_name_space">Space</string>
+    <string name="theme_title_space">@string/theme_name_space</string>
+    <string name="theme_overlay_color_space">com.android.theme.color.space</string>
+    <string name="theme_overlay_primary_space">com.android.theme.color.primary.darkblue</string>
+    <string name="theme_overlay_icon_android_space">com.android.theme.icon_pack.circular.android</string>
+    <string name="theme_overlay_icon_launcher_space">com.android.theme.icon_pack.circular.launcher</string>
+    <string name="theme_overlay_icon_settings_space">com.android.theme.icon_pack.circular.settings</string>
+    <string name="theme_overlay_icon_sysui_space">com.android.theme.icon_pack.circular.systemui</string>
+    <string name="theme_overlay_shape_space">com.android.theme.icon.squircle</string>
+    <string name="theme_wallpaper_title_space">Omni</string>
+    <string name="theme_wallpaper_attribution_space">OmniROM</string>
+    <string name="theme_wallpaper_action_space">https://www.omnirom.org/</string>
+    <!--<string name="theme_header_space">space_header</string>-->
+
+    <string name="theme_name_red">Red</string>
+    <string name="theme_title_red">@string/theme_name_red</string>
+    <string name="theme_overlay_color_red">com.android.theme.color.reddevil</string>
+    <string name="theme_overlay_primary_red">com.android.theme.color.primary.omniblack</string>
+    <string name="theme_overlay_icon_android_red">com.android.theme.icon_pack.rounded.android</string>
+    <string name="theme_overlay_icon_launcher_red">com.android.theme.icon_pack.rounded.launcher</string>
+    <string name="theme_overlay_icon_settings_red">com.android.theme.icon_pack.rounded.settings</string>
+    <string name="theme_overlay_icon_sysui_red">com.android.theme.icon_pack.rounded.systemui</string>
+    <string name="theme_overlay_shape_red">com.android.theme.icon.roundedrect</string>
+    <string name="theme_wallpaper_title_red">Omni</string>
+    <string name="theme_wallpaper_attribution_red">OmniROM</string>
+    <string name="theme_wallpaper_action_red">https://www.omnirom.org/</string>
+    <!--<string name="theme_header_red">red_header</string>-->
+
+    <string name="theme_name_nature">Nature</string>
+    <string name="theme_title_nature">@string/theme_name_nature</string>
+    <string name="theme_overlay_color_nature">com.android.theme.color.green</string>
+    <string name="theme_overlay_primary_nature">com.android.theme.color.primary.darkgreen</string>
+    <string name="theme_overlay_icon_android_nature">com.android.theme.icon_pack.rounded.android</string>
+    <string name="theme_overlay_icon_launcher_nature">com.android.theme.icon_pack.rounded.launcher</string>
+    <string name="theme_overlay_icon_settings_nature">com.android.theme.icon_pack.rounded.settings</string>
+    <string name="theme_overlay_icon_sysui_nature">com.android.theme.icon_pack.rounded.systemui</string>
+    <string name="theme_overlay_shape_nature">com.android.theme.icon.circle</string>
+    <string name="theme_wallpaper_title_nature">Omni</string>
+    <string name="theme_wallpaper_attribution_nature">OmniROM</string>
+    <string name="theme_wallpaper_action_nature">https://www.omnirom.org/</string>
+    <!--<string name="theme_header_nature">nature_header</string>-->
+
+</resources>

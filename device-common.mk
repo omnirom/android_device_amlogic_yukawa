@@ -178,7 +178,8 @@ PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
 # Wifi
 PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
 PRODUCT_PROPERTY_OVERRIDES += wifi.interface=wlan0 \
-                              wifi.supplicant_scan_interval=15
+                              wifi.supplicant_scan_interval=15 \
+                              ro.boot.wificountrycode=00
 
 # Build default bluetooth a2dp and usb audio HALs
 PRODUCT_PACKAGES += \
@@ -399,7 +400,10 @@ PRODUCT_PACKAGES += \
     WallpaperCropper2 \
     OmniRemote \
     ThemePicker \
-    DeviceParts
+    DeviceParts \
+    OmniStyle \
+    OmniOverlayStub \
+    Provision2
 
 # Additional tools
 PRODUCT_PACKAGES += \
