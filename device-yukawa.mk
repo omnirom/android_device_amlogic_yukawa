@@ -1,15 +1,23 @@
 ifndef TARGET_KERNEL_USE
-TARGET_KERNEL_USE=5.4-mod
+TARGET_KERNEL_USE = 5.4-mod
 endif
 
 ifndef TARGET_USE_TABLET_LAUNCHER
-TARGET_USE_TABLET_LAUNCHER=true
+TARGET_USE_TABLET_LAUNCHER = true
 endif
+
+# must be before including vendor/omni
+DEVICE_PACKAGE_OVERLAYS += device/amlogic/yukawa/overlay
+TARGET_BOOTANIMATION_SIZE := 720p
+
+$(call inherit-product, vendor/omni/config/common_tablet.mk)
 
 $(call inherit-product, device/amlogic/yukawa/device-common.mk)
 
 ifeq ($(TARGET_VIM3), true)
 PRODUCT_PROPERTY_OVERRIDES += ro.product.device=vim3
+# sets pre-device in OTA meta
+PRODUCT_SYSTEM_PROPERTIES += ro.product.device=vim3
 AUDIO_DEFAULT_OUTPUT := hdmi
 GPU_TYPE := gondul_ion
 else ifeq ($(TARGET_VIM3L), true)

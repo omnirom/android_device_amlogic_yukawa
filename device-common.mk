@@ -17,12 +17,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Enable Scoped Storage related
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-DEVICE_PACKAGE_OVERLAYS := device/amlogic/yukawa/overlay
+#DEVICE_PACKAGE_OVERLAYS := device/amlogic/yukawa/overlay
 ifeq ($(TARGET_USE_TABLET_LAUNCHER), true)
 # Setup tablet build
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-PRODUCT_CHARACTERISTICS := tablet
 else
 # Setup TV Build
 USE_OEM_TV_APP := true
@@ -41,11 +40,12 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier
+
 AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALm=true \
-    POSTINSTALL_PATH=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE=ext4 \
-    POSTINSTALL_OPTIONAL=true
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
 
 PRODUCT_PACKAGES += \
     update_engine_sideload \
@@ -372,10 +372,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
-include vendor/microg/microg.mk
-VENDOR_EXCEPTION_PATHS += \
-    microg
-
 # gps
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
@@ -389,27 +385,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
 
-PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=ondemand
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=performance
 
 # Additional apps
 PRODUCT_PACKAGES += \
-    OmniSwitch \
-    OmniJaws \
-    MatLog \
-    OmniChange \
-    WallpaperCropper2 \
-    OmniRemote \
-    ThemePicker \
     DeviceParts \
-    OmniStyle \
-    OmniOverlayStub \
-    Provision2
-
-# Additional tools
-PRODUCT_PACKAGES += \
-    vim \
-    vncflinger \
-    vncpasswd
+    Provision2 \
+    Terminal
 
 # Include Virtualization APEX
 #$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
