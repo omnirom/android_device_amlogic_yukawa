@@ -48,8 +48,8 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String CPU_GOVERNOR_PROPERTY = "persist.vendor.cpufreq.governor";
 
-    private static final String CPU_SYSFS_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
-    private static final String CPU_SYSFS_GOVERNOR = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+    private static final String CPU_SYSFS_GOVERNORS = "/sys/devices/system/cpu/cpu2/cpufreq/scaling_available_governors";
+    private static final String CPU_SYSFS_GOVERNOR = "/sys/devices/system/cpu/cpu2/cpufreq/scaling_governor";
 
     private IWindowManager mWindowManager;
     private ListPreference mRotationLock;
