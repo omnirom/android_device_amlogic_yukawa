@@ -31,4 +31,14 @@
 
     <!-- The number of rows in the QuickSettings -->
     <integer name="quick_settings_max_rows">3</integer>
+    
+    <!-- The default tiles to display in QuickSettings -->
+    <string name="quick_settings_tiles_default" translatable="false">
+        wifi,bt,dnd,airplane,location,hotspot,screenrecord,dark
+    </string>
+
+    <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
+    <string name="quick_settings_tiles_stock" translatable="false">
+        wifi,bt,dnd,airplane,location,hotspot,screenrecord,dark,work,night,inversion,reverse
+    </string>
 </resources>

@@ -24,4 +24,5 @@
     <!-- The number of columns in the QuickSettings -->
     <integer name="quick_settings_num_columns">4</integer>
 
+    <integer name="controls_max_columns">4</integer>
 </resources>
