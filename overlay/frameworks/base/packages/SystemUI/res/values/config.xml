@@ -23,15 +23,12 @@
     <!-- Nav bar button default ordering/layout -->
     <string name="config_navBarLayout" translatable="false">left,voldown,volup,back;home;recent,power,right</string>
 
-        <!-- The maximum number of tiles in the QuickQSPanel -->
-    <integer name="quick_qs_panel_max_columns">8</integer>
-
-    <!-- The number of columns in the QuickSettings -->
     <integer name="quick_settings_num_columns">4</integer>
 
-    <!-- The number of rows in the QuickSettings -->
-    <integer name="quick_settings_max_rows">3</integer>
-    
+    <integer name="power_menu_lite_max_columns">4</integer>
+
+    <bool name="config_skinnyNotifsInLandscape">false</bool>
+
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
         wifi,bt,dnd,airplane,location,hotspot,screenrecord,dark
