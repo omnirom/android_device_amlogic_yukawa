@@ -12,7 +12,7 @@ cc_binary {
     relative_install_path: "hw",
     init_rc: ["lights.rc"],
     vintf_fragments: ["lights.xml"],
-    vendor: true,
+    //vendor: true,
     shared_libs: [
         "libbase",
         "libbinder_ndk",

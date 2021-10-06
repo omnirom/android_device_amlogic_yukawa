@@ -219,7 +219,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.drm_meson \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.3-service.clearkey
+    android.hardware.drm@1.4-service.clearkey
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/binaries/drm/vendor/lib/mediadrm/libwvdrmengine.so:$(TARGET_COPY_OUT_VENDOR)/lib/mediadrm/libwvdrmengine.so \
@@ -360,7 +360,7 @@ PRODUCT_COPY_FILES += \
 
 
 # Light HAL
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     android.hardware.light-service \
     lights-yukawa
 
@@ -392,6 +392,17 @@ PRODUCT_PACKAGES += \
     DeviceParts \
     Provision2 \
     Terminal
+
+# for bringup to disable secure adb - copy adbkey.pub from ~/.android
+#PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
+#PRODUCT_PACKAGES += \
+    adb_keys
+
+# Keep the VNDK APEX in /system partition for REL branches as these branches are
+# expected to have stable API/ABI surfaces.
+ifneq (REL,$(PLATFORM_VERSION_CODENAME))
+  PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+endif
 
 # Include Virtualization APEX
 #$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
