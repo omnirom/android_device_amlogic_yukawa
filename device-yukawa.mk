@@ -1,5 +1,5 @@
 ifndef TARGET_KERNEL_USE
-TARGET_KERNEL_USE = 5.4-mod
+TARGET_KERNEL_USE := 5.4-mod
 endif
 
 ifndef TARGET_USE_TABLET_LAUNCHER
@@ -18,6 +18,21 @@ ifndef TARGET_AVB_ENABLE
 TARGET_AVB_ENABLE = true
 endif
 
+ifeq ($(TARGET_VIM3), true)
+TARGET_DEV_BOARD := vim3
+else ifeq ($(TARGET_VIM3L), true)
+TARGET_DEV_BOARD := vim3l
+else ifeq ($(TARGET_DEV_BOARD),)
+TARGET_DEV_BOARD := sei610
+endif
+
+ifneq ($(filter $(TARGET_DEV_BOARD),vim3),)
+AUDIO_DEFAULT_OUTPUT := hdmi
+GPU_TYPE := gondul_ion
+else ifneq ($(filter $(TARGET_DEV_BOARD),vim3l),)
+AUDIO_DEFAULT_OUTPUT := hdmi
+endif
+
 # must be before including vendor/omni
 DEVICE_PACKAGE_OVERLAYS += device/amlogic/yukawa/overlay
 TARGET_BOOTANIMATION_SIZE := 720p
@@ -26,18 +41,9 @@ $(call inherit-product, vendor/omni/config/common_tablet.mk)
 
 $(call inherit-product, device/amlogic/yukawa/device-common.mk)
 
-ifeq ($(TARGET_VIM3), true)
-PRODUCT_PROPERTY_OVERRIDES += ro.product.device=vim3
+PRODUCT_PROPERTY_OVERRIDES += ro.product.device=$(TARGET_DEV_BOARD)
 # sets pre-device in OTA meta
-PRODUCT_SYSTEM_PROPERTIES += ro.product.device=vim3
-AUDIO_DEFAULT_OUTPUT := hdmi
-GPU_TYPE := gondul_ion
-else ifeq ($(TARGET_VIM3L), true)
-PRODUCT_PROPERTY_OVERRIDES += ro.product.device=vim3l
-AUDIO_DEFAULT_OUTPUT := hdmi
-else
-PRODUCT_PROPERTY_OVERRIDES += ro.product.device=sei610
-endif
+PRODUCT_SYSTEM_PROPERTIES += ro.product.device=$(TARGET_DEV_BOARD)
 GPU_TYPE ?= dvalin_ion
 
 BOARD_KERNEL_DTB := device/amlogic/yukawa-kernel/$(TARGET_KERNEL_USE)
