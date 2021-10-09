@@ -37,4 +37,5 @@
     <!-- dont touch encryption status for now -->
     <bool name="config_show_encryption_and_credentials_encryption_status">false</bool>
 
+    <bool name="config_show_brightness_level">false</bool>
 </resources>

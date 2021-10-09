@@ -27,6 +27,12 @@
     <!-- This device does not allow sms service. -->
     <bool name="config_sms_capable">false</bool>
 
+    <!-- Flag indicating whether the current device allows data.
+         If true, this means that the device supports data connectivity through
+         the telephony network.
+         This can be overridden to false for devices that support voice and/or sms . -->
+    <bool name="config_mobile_data_capable">false</bool>
+
     <!-- Separate software navigation bar required on this device. -->
     <bool name="config_showNavigationBar">true</bool>
 
@@ -140,7 +146,7 @@
             4 - Go to home
             5 - Dismiss IME if shown. Otherwise go to home
     -->
-    <integer name="config_shortPressOnPowerBehavior">0</integer>
+    <integer name="config_shortPressOnPowerBehavior">1</integer>
 
     <!-- Control the behavior when the user long presses the power button.
             0 - Nothing
@@ -161,8 +167,6 @@
     <bool name="config_enableAutoPowerModes">false</bool>
     
     <bool translatable="false" name="config_enableAutoSuspend">false</bool>
-
-    <integer name="config_minimumScreenOffTimeout">50000</integer>
     
     <bool name="config_safe_media_volume_enabled">false</bool>
 
@@ -192,9 +196,6 @@
         <item>logout</item>
         <item>screenshot</item>
     </string-array>
-
-    <bool name="config_use16BitTaskSnapshotPixelFormat">true</bool>
-    <item name="config_lowResTaskSnapshotScale" format="float" type="dimen">0.3</item>
 
     <!-- If true, then we do not ask user for permission for apps to connect to USB devices.
          Do not set this to true for production devices. Doing so will cause you to fail CTS. -->
