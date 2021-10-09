@@ -88,7 +88,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += vndk_package
 
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl-cuttlefish \
+    android.hardware.health@2.1-impl-yukawa \
     android.hardware.health@2.1-service
 
 ifeq ($(TARGET_USE_AB_SLOT), true)
@@ -313,6 +313,7 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service
 
 PRODUCT_COPY_FILES +=  \
+    frameworks/native/data/etc/tablet_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
