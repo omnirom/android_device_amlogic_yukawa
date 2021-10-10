@@ -160,7 +160,8 @@ BOARD_SEPOLICY_DIRS += \
 DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest.xml
 
 ifneq ($(TARGET_KERNEL_USE), 4.19)
-DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest_kernel5.xml
+#DEVICE_MANIFEST_FILE += device/amlogic/yukawa/manifest_kernel5.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := device/amlogic/yukawa/compatibility_matrix.device.xml
 endif
 DEVICE_MATRIX_FILE := device/amlogic/yukawa/compatibility_matrix.xml
 
