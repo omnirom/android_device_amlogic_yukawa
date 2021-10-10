@@ -386,7 +386,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
 
-#PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=performance
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=performance
 
 # Additional apps
 PRODUCT_PACKAGES += \
@@ -404,6 +404,10 @@ PRODUCT_PACKAGES += \
 ifneq (REL,$(PLATFORM_VERSION_CODENAME))
   PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
 endif
+
+PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
+    ro.surface_flinger.has_wide_color_display=false \
+    ro.surface_flinger.has_HDR_display=false
 
 # Include Virtualization APEX
 #$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
