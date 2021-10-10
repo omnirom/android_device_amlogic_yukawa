@@ -38,6 +38,8 @@
     <string name="quick_settings_tiles_stock" translatable="false">
         wifi,bt,dnd,airplane,location,hotspot,screenrecord,dark,work,night,inversion,reverse
     </string>
-    
-    <dimen name="notification_scrim_corner_radius">16dp</dimen>
+
+    <!-- to hide statusbar and qs batteryy on unknown state
+        needed for battery less devices -->
+    <bool name="config_battery_hide_on_unknown">true</bool>
 </resources>
