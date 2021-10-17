@@ -39,11 +39,12 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
     update_engine \
-    update_verifier
+    update_verifier \
+    omnipreopt_script
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/omnipreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
@@ -239,7 +240,7 @@ PRODUCT_PROPERTY_OVERRIDES += ro.hdmi.device_type=4 \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/input/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml
 
 PRODUCT_PACKAGES += \
@@ -408,6 +409,13 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
     ro.surface_flinger.has_wide_color_display=false \
     ro.surface_flinger.has_HDR_display=false
+
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.1-service
+
+PRODUCT_COPY_FILES += \
+    device/amlogic/yukawa/input/Vendor_222a_Product_0001.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_222a_Product_0001.idc \
+    device/amlogic/yukawa/input/Vendor_1fd2_Product_6003.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_1fd2_Product_6003.idc    
 
 # Include Virtualization APEX
 #$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
