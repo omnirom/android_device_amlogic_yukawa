@@ -37,7 +37,7 @@
     <!-- dont touch encryption status for now -->
     <bool name="config_show_encryption_and_credentials_encryption_status">false</bool>
 
-    <!--bool name="config_show_brightness_level">false</bool>-->
+    <bool name="config_show_brightness">false</bool>
 
     <!-- Whether or not homepage should display user's account avatar -->
     <bool name="config_show_avatar_in_homepage">true</bool>
