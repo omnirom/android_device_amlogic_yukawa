@@ -240,7 +240,8 @@ PRODUCT_PROPERTY_OVERRIDES += ro.hdmi.device_type=4 \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/input/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
 
-PRODUCT_COPY_FILES += \
+# TODO what to do with cec?
+#PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml
 
 PRODUCT_PACKAGES += \
@@ -350,8 +351,9 @@ PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
 endif
 
+# use default in /apex/com.android.media.swcodec
 # Copy media codecs config file
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/media_xml/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml
 
@@ -372,7 +374,7 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
 PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
-PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+#PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 # gps
 PRODUCT_PACKAGES += \

@@ -6,6 +6,18 @@ ifndef TARGET_USE_TABLET_LAUNCHER
 TARGET_USE_TABLET_LAUNCHER = true
 endif
 
+ifndef TARGET_VIM3
+TARGET_VIM3 = true
+endif
+
+ifndef TARGET_USE_AB_SLOT
+TARGET_USE_AB_SLOT = true
+endif
+
+ifndef TARGET_AVB_ENABLE
+TARGET_AVB_ENABLE = true
+endif
+
 # must be before including vendor/omni
 DEVICE_PACKAGE_OVERLAYS += device/amlogic/yukawa/overlay
 TARGET_BOOTANIMATION_SIZE := 720p
