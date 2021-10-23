@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export AOSP_TOPDIR=`pwd`/../../../..
-export PATH=${AOSP_TOPDIR}/prebuilts/clang/host/linux-x86/clang-r399163b/bin:$PATH
+export PATH=${AOSP_TOPDIR}/prebuilts/clang/host/linux-x86/clang-r416183b/bin:$PATH
 export PATH=${AOSP_TOPDIR}/prebuilts/gas/linux-x86:$PATH
 export PATH=${AOSP_TOPDIR}/prebuilts/misc/linux-x86/lz4:$PATH
 export ARCH=arm64
