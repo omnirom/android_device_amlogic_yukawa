@@ -21,4 +21,5 @@
     <dimen name="widget_list_top_bottom_corner_radius">8dp</dimen>
     <dimen name="widget_list_content_corner_radius">8dp</dimen>
     <dimen name="widget_preview_corner_radius">8dp</dimen>
+    <dimen name="search_box_radius">8dp</dimen>
 </resources>
