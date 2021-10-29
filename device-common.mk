@@ -212,7 +212,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@7.0-impl \
     android.hardware.audio.effect@7.0-impl \
-    android.hardware.soundtrigger@2.3-impl \
+    android.hardware.soundtrigger@2.3-impl
 
 # Hardware Composer HAL
 #
@@ -373,8 +373,6 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
 PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
-
-#PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 # gps
 PRODUCT_PACKAGES += \
