@@ -18,8 +18,11 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/yukawa_sei510.mk \
     $(LOCAL_DIR)/yukawa32_sei510.mk \
     $(LOCAL_DIR)/yukawa.mk \
-    $(LOCAL_DIR)/yukawa32.mk
+    $(LOCAL_DIR)/yukawa32.mk \
+    $(LOCAL_DIR)/omni_yukawa.mk
+
 
 COMMON_LUNCH_CHOICES := \
     yukawa_sei510-userdebug \
-    yukawa-userdebug
+    yukawa-userdebug \
+    omni_yukawa-userdebug
