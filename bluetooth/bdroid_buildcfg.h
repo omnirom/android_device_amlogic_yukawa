@@ -43,4 +43,6 @@
 
 #define BTA_AV_SINK_INCLUDED           TRUE
 
+#define BTM_DEF_LOCAL_NAME   "Khadas VIM3"
+
 #endif
