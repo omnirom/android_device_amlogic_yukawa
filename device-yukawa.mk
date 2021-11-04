@@ -24,12 +24,14 @@ PRODUCT_PROPERTY_OVERRIDES += ro.product.device=$(TARGET_DEV_BOARD)
 PRODUCT_SYSTEM_PROPERTIES += ro.product.device=$(TARGET_DEV_BOARD)
 GPU_TYPE ?= dvalin_ion
 
+ifeq ($(TARGET_BUILD_KERNEL),)
 BOARD_KERNEL_DTB := device/amlogic/yukawa-kernel/$(TARGET_KERNEL_USE)
 
 ifeq ($(TARGET_PREBUILT_DTB),)
 LOCAL_DTB := $(BOARD_KERNEL_DTB)
 else
 LOCAL_DTB := $(TARGET_PREBUILT_DTB)
+endif
 endif
 
 # Feature permissions

@@ -18,6 +18,8 @@ ifndef TARGET_AVB_ENABLE
 TARGET_AVB_ENABLE := true
 endif
 
+TARGET_BUILD_KERNEL := true
+
 # Inherit the full_base and device configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
