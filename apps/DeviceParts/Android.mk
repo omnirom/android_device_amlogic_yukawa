@@ -25,6 +25,10 @@ LOCAL_RESOURCE_DIR := $(package_resource_overlays) $(LOCAL_RESOURCE_DIR)
 LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_DEX_PREOPT := false
 
+include frameworks/base/packages/SettingsLib/common.mk
+
+include packages/apps/OmniLib/common.mk
+
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
