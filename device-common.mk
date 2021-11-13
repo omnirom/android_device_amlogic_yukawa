@@ -394,7 +394,7 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=performance
 # Additional apps
 PRODUCT_PACKAGES += \
     DeviceParts \
-    Provision2 \
+    OmniProvision \
     Terminal
 
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
