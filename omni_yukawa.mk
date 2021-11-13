@@ -33,6 +33,6 @@ $(call inherit-product, device/amlogic/yukawa/yukawa-common.mk)
 
 PRODUCT_DEVICE := yukawa
 PRODUCT_NAME := omni_yukawa
-PRODUCT_BRAND := Khadas
+PRODUCT_BRAND := Android
 PRODUCT_MODEL := VIM3
 PRODUCT_MANUFACTURER := Khadas
