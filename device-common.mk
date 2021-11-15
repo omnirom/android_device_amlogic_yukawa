@@ -389,7 +389,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
 
-PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=performance
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=schedutil
 
 # Additional apps
 PRODUCT_PACKAGES += \
