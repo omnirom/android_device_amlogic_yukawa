@@ -181,8 +181,7 @@ PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
 # Wifi
 PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
 PRODUCT_PROPERTY_OVERRIDES += wifi.interface=wlan0 \
-                              wifi.supplicant_scan_interval=15 \
-                              ro.boot.wificountrycode=00
+                              wifi.supplicant_scan_interval=15
 
 # Build default bluetooth a2dp and usb audio HALs
 PRODUCT_PACKAGES += \
@@ -224,12 +223,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.4-service.clearkey
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/binaries/drm/vendor/lib/mediadrm/libwvdrmengine.so:$(TARGET_COPY_OUT_VENDOR)/lib/mediadrm/libwvdrmengine.so \
-    $(LOCAL_PATH)/binaries/drm/vendor/bin/hw/android.hardware.drm@1.3-service.widevine:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.drm@1.3-service.widevine \
-    $(LOCAL_PATH)/binaries/drm/vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.drm@1.3-service.widevine.rc \
-    $(LOCAL_PATH)/binaries/drm/vendor/lib64/libwvhidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libwvhidl.so
-
 # CEC
 PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-impl \
@@ -237,7 +230,7 @@ PRODUCT_PACKAGES += \
     hdmi_cec.yukawa
 
 PRODUCT_PROPERTY_OVERRIDES += ro.hdmi.device_type=4 \
-    persist.sys.hdmi.keep_awake=true
+    persist.sys.hdmi.keep_awake=false
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/input/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
@@ -317,7 +310,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service
 
 PRODUCT_COPY_FILES +=  \
-    frameworks/native/data/etc/tablet_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
@@ -375,49 +367,6 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
 PRODUCT_COPY_FILES += \
     device/amlogic/yukawa/hal/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
-
-# gps
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
-
-PRODUCT_PACKAGES += \
-    gps.yukawa
-
-PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
-
-PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=schedutil
-
-# Additional apps
-PRODUCT_PACKAGES += \
-    DeviceParts \
-    OmniProvision \
-    Terminal
-
-# for bringup to disable secure adb - copy adbkey.pub from ~/.android
-#PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
-#PRODUCT_PACKAGES += \
-    adb_keys
-
-# Keep the VNDK APEX in /system partition for REL branches as these branches are
-# expected to have stable API/ABI surfaces.
-ifneq (REL,$(PLATFORM_VERSION_CODENAME))
-  PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
-endif
-
-PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
-    ro.surface_flinger.has_wide_color_display=false \
-    ro.surface_flinger.has_HDR_display=false
-
-PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.1-service
-
-PRODUCT_COPY_FILES += \
-    device/amlogic/yukawa/input/Vendor_222a_Product_0001.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_222a_Product_0001.idc \
-    device/amlogic/yukawa/input/Vendor_1fd2_Product_6003.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_1fd2_Product_6003.idc    
 
 # Include Virtualization APEX
 #$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
