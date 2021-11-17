@@ -44,7 +44,9 @@ PRODUCT_COPY_FILES +=  \
 # just set a default - same as kernel default
 PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=schedutil
 
-#PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1
+# just here as reference
+#PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
+    vendor.hwc.drm.scale_with_gpu=1
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.wificountrycode=00
