@@ -48,6 +48,11 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=schedutil
 #PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
     vendor.hwc.drm.scale_with_gpu=1
 
+# prevent surfaceflinger fatal check on bogus display modes coming from hdmi
+# instead SurfaceFlinger will restart if hdmi is plugged
+# turning monitor off and on is not affected by this
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_display_mode_check=1
+    
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.wificountrycode=00
 
