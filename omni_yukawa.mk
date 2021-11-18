@@ -96,6 +96,11 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service
 
+# power HAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.1-impl \
+    android.hardware.power@1.1-service.yukawa
+
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
 #PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
 #PRODUCT_PACKAGES += \

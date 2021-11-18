@@ -248,7 +248,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl-2.1
 
 # PowerHAL
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     android.hardware.power-service.example
 
 # PowerStats HAL
