@@ -41,8 +41,8 @@ PRODUCT_MANUFACTURER := Khadas
 PRODUCT_COPY_FILES +=  \
     frameworks/native/data/etc/tablet_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/tablet_core_hardware.xml
 
-# just set a default - same as kernel default
-PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=schedutil
+# just set a default
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=conservative
 
 # just here as reference
 #PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
@@ -78,6 +78,11 @@ PRODUCT_PACKAGES += \
     DeviceParts \
     OmniProvision \
     Terminal
+
+ifeq ($(ROM_BUILDTYPE),GAPPS)
+PRODUCT_PACKAGES += \
+    DeviceRegistration
+endif
 
 # widevine
 PRODUCT_COPY_FILES += \
