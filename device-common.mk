@@ -83,8 +83,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 PRODUCT_PACKAGES += \
-	android.hardware.fastboot@1.0 \
-	android.hardware.fastboot@1.0-impl-mock \
+	android.hardware.fastboot@1.1 \
+	android.hardware.fastboot@1.1-impl.yukawa \
 	fastbootd
 
 # All VNDK libraries (HAL interfaces, VNDK, VNDK-SP, LL-NDK)
