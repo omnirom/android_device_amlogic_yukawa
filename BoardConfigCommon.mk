@@ -56,7 +56,8 @@ AB_OTA_PARTITIONS += \
     boot \
     system \
     vendor \
-    vbmeta
+    vbmeta \
+    dtbo
 endif
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
