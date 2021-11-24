@@ -1,0 +1,8 @@
+{
+    "model": "Khadas VIM3",
+    "pageUrl":"https://dl.omnirom.org/tmp/yukawa",
+    "make": "Khadas",
+    "image": "meta/device_image.jpg",
+    "state": "unofficial",
+    "device": "yukawa"
+}
