@@ -14,5 +14,5 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <color name="ic_launcher_background">#000</color>
+    <color name="ic_launcher_background">#fff</color>
 </resources>
