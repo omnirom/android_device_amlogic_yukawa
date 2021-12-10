@@ -64,23 +64,33 @@ static void property_override(const std::string& name, const std::string& value)
     }
 }
 
-// debug.drm.mode.force=1280x800
+// debug.drm.mode.force=1280x800@60
 static void set_drm_mode_property() {
-    std::string drmModeFile = android::base::GetProperty("debug.drm.mode.force", "");
+    std::string drmMode = android::base::GetProperty("debug.drm.mode.force", "");
     // security reset - if available always set value from /system/build.prop
-    if (!drmModeFile.empty()) {
+    if (!drmMode.empty()) {
         property_override("persist.debug.drm.mode.force", "");
     } else {
-        std::string drmMode = android::base::GetProperty("persist.debug.drm.mode.force", "");
+        drmMode = android::base::GetProperty("persist.debug.drm.mode.force", "");
         if (!drmMode.empty()) {
             property_override("debug.drm.mode.force", drmMode);
         }
     }
 }
 
+// gps.device.path=/dev/ttyACM0
+static void set_gps_device_property() {
+    std::string gpsDevice = android::base::GetProperty("persist.gps.device.path", "");
+    if (!gpsDevice.empty()) {
+        property_override("gps.device.path", gpsDevice);
+    }
+}
+
 void vendor_load_properties()
 {
     set_drm_mode_property();
+
+    set_gps_device_property();
 
     property_override("ro.boot.verifiedbootstate", "green");
 }
