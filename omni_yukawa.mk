@@ -106,6 +106,14 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.1-impl \
     android.hardware.power@1.1-service.yukawa
 
+PRODUCT_PACKAGES += \
+    gpiodetect \
+    gpiofind \
+    gpioget \
+    gpioinfo \
+    gpiomon \
+    gpioset
+
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
 #PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
 #PRODUCT_PACKAGES += \

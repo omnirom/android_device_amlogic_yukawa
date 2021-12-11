@@ -40,6 +40,15 @@ on zygote-start
     # Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
 
+    # gpio
+    chown system system /dev/gpiochip0
+    chmod 0666 /dev/gpiochip0
+    chown system system /dev/gpiochip1
+    chmod 0666 /dev/gpiochip2
+    chown system system /dev/gpiochip2
+    chmod 0666 /dev/gpiochip1
+    mkdir /data/gpio 0777 system system
+
 service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
      -g@android:wpa_wlan0
      interface android.hardware.wifi.supplicant@1.0::ISupplicant default
