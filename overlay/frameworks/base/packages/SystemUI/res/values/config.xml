@@ -45,5 +45,4 @@
 
     <string name="config_displayCpus" translatable="false">0,2</string>
 
-    <bool name="always_show_screenshot_dismiss_botton">true</bool>
 </resources>
