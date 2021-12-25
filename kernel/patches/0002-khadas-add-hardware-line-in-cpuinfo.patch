@@ -1,0 +1,66 @@
+From 14eb45b0290450cdbc4225496f072e53d633c2c6 Mon Sep 17 00:00:00 2001
+From: maxwen <max.weninger@gmail.com>
+Date: Tue, 14 Dec 2021 21:24:59 +0100
+Subject: [PATCH 2/3] khadas: add hardware line in cpuinfo
+
+https: //github.com/khadas/fenix/blob/master/packages/linux-mainline/patches/5.12/0056-add-device-model-to-proc-cpuinfo.patch
+Change-Id: Id657d04a60d40eb92de3a9d0e611f99c03374bba
+---
+ arch/arm64/kernel/cpuinfo.c |  4 ++++
+ arch/arm64/kernel/setup.c   | 11 +++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/arch/arm64/kernel/cpuinfo.c b/arch/arm64/kernel/cpuinfo.c
+index 05933c065732..abdb4ed05064 100644
+--- a/arch/arm64/kernel/cpuinfo.c
++++ b/arch/arm64/kernel/cpuinfo.c
+@@ -124,6 +124,8 @@ static const char *const compat_hwcap2_str[] = {
+ };
+ #endif /* CONFIG_COMPAT */
+ 
++extern const char *machine_model;
++
+ static int c_show(struct seq_file *m, void *v)
+ {
+ 	int i, j;
+@@ -179,6 +181,8 @@ static int c_show(struct seq_file *m, void *v)
+ 		seq_printf(m, "CPU revision\t: %d\n\n", MIDR_REVISION(midr));
+ 	}
+ 
++	seq_printf(m, "Hardware\t: %s\n", machine_model);
++
+ 	return 0;
+ }
+ 
+diff --git a/arch/arm64/kernel/setup.c b/arch/arm64/kernel/setup.c
+index f55f4a15a905..9ae582c19089 100644
+--- a/arch/arm64/kernel/setup.c
++++ b/arch/arm64/kernel/setup.c
+@@ -51,6 +51,9 @@
+ #include <asm/xen/hypervisor.h>
+ #include <asm/mmu_context.h>
+ 
++const char *machine_model;
++EXPORT_SYMBOL(machine_model);
++
+ static int num_standard_resources;
+ static struct resource *standard_resources;
+ 
+@@ -195,6 +198,14 @@ static void __init setup_machine_fdt(phys_addr_t dt_phys)
+ 	if (!name)
+ 		return;
+ 
++	pr_info("Machine model: %s\n", name);
++	//	dump_stack_set_arch_desc("%s (DT)", name);
++	name = of_flat_dt_get_machine_name();
++	if (!name)
++		return;
++
++	machine_model = name;
++
+ 	pr_info("Machine model: %s\n", name);
+ 	dump_stack_set_arch_desc("%s (DT)", name);
+ }
+-- 
+2.31.1
+

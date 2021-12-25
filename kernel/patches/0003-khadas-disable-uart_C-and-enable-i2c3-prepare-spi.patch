@@ -1,0 +1,86 @@
+From 0ff6cf9a9c644abdb17ae1c5cac4a51fa00f0a06 Mon Sep 17 00:00:00 2001
+From: maxwen <max.weninger@gmail.com>
+Date: Wed, 15 Dec 2021 16:02:30 +0100
+Subject: [PATCH 3/3] khadas: disable uart_C and enable i2c3 - prepare spi
+
+frees gpio h6 and h7 (uart) - enables pin 22 and 23 scl/sda (i2c)
+adds spicc1 (disabled)
+
+Change-Id: I0686ab846b71910a08fde212dd10f3c54ca661b1
+---
+ .../meson-g12b-a311d-khadas-vim3-android.dts  |  8 ++++-
+ .../boot/dts/amlogic/meson-khadas-vim3.dtsi   | 31 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
+index f17825cac2ff..5965ce1be9e8 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
+@@ -39,8 +39,14 @@
+ 	gpio-open-drain;
+ };
+ 
++/*
++to free gpio h6 and h7
++PIN15 <---> RX -> h7
++PIN16 <---> TX -> h6
++must also be disabled for spicc1
++*/
+ &uart_C {
+-        status = "okay";
++        status = "disabled";
+         pinctrl-0 = <&uart_c_pins>;
+         pinctrl-names = "default";
+ };
+diff --git a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+index 693b416a9c95..5cbecbb19bfb 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+@@ -329,6 +329,16 @@
+ 	};
+ };
+ 
++/*
++PIN22 <---> SCL
++PIN23 <---> SDA
++*/
++&i2c3 {
++	status = "okay";
++	pinctrl-0 = <&i2c3_sda_a_pins>, <&i2c3_sck_a_pins>;
++	pinctrl-names = "default";
++};
++
+ &ir {
+ 	status = "okay";
+ 	pinctrl-0 = <&remote_input_ao_pins>;
+@@ -342,6 +352,27 @@
+         pinctrl-names = "default";
+ };
+ 
++/* to enable spicc1 - disable pwm_ef and uart_C
++PIN37 <---> MOSI
++PIN35 <---> MISO
++PIN15 <---> SS
++PIN16 <---> SCLK
++*/
++&spicc1 {
++	status = "disabled";
++	pinctrl-names = "default";
++	pinctrl-0 = <&spicc1_pins>;
++	cs-gpios = <&gpio GPIOH_6 0>;
++
++	spidev@1 {
++		status = "okay";
++		compatible = "linux,spidev";
++		/* spi default max clock 100Mhz */
++		spi-max-frequency = <100000000>;
++		reg = <1>;
++	};
++};
++
+ &saradc {
+ 	status = "okay";
+ 	vref-supply = <&vddao_1v8>;
+-- 
+2.31.1
+
