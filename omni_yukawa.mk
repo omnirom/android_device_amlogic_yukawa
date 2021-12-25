@@ -108,7 +108,8 @@ PRODUCT_PACKAGES += \
 
 # WiringPi
 PRODUCT_PACKAGES += \
-    gpio
+    gpio \
+    adxl345
 
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
 #PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub

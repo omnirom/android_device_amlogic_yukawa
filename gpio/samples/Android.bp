@@ -1,0 +1,17 @@
+cc_binary {
+    name: "adxl345",
+    srcs: [
+        "17_adxl345.c",
+    ],
+    header_libs: ["wiringPi-headers"],
+    cflags: [
+        "-Wno-return-type",
+        "-Wno-int-conversion",
+    ],
+    host_ldlibs: ["-llog"],
+    shared_libs: [
+        "libwiringPi",
+        "libwiringPiDev",
+    ],
+
+}

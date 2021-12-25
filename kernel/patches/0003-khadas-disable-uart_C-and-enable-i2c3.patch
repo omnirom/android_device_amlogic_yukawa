@@ -1,0 +1,46 @@
+From 7f1cb43093c66080da9b9c379f9ac3bfb9430b0a Mon Sep 17 00:00:00 2001
+From: maxwen <max.weninger@gmail.com>
+Date: Wed, 15 Dec 2021 16:02:30 +0100
+Subject: [PATCH 3/3] khadas: disable uart_C and enable i2c3
+
+frees gpio h6 and h7 (uart) - enables pin 22 and 23 scl/sda (i2c)
+
+Change-Id: I0686ab846b71910a08fde212dd10f3c54ca661b1
+---
+ .../dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts    | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi          | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
+index f17825cac2ff..e46d5915a141 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3-android.dts
+@@ -40,7 +40,7 @@
+ };
+ 
+ &uart_C {
+-        status = "okay";
++        status = "disabled";
+         pinctrl-0 = <&uart_c_pins>;
+         pinctrl-names = "default";
+ };
+diff --git a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+index 693b416a9c95..3a61acc4fffb 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+@@ -329,6 +329,12 @@
+ 	};
+ };
+ 
++&i2c3 {
++	status = "okay";
++    pinctrl-0 = <&i2c3_sda_a_pins>, <&i2c3_sck_a_pins>;
++	pinctrl-names = "default";
++};
++
+ &ir {
+ 	status = "okay";
+ 	pinctrl-0 = <&remote_input_ao_pins>;
+-- 
+2.31.1
+
