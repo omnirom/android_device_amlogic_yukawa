@@ -48,6 +48,9 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=conservative
 #PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
     vendor.hwc.drm.scale_with_gpu=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196610
+
 # prevent surfaceflinger fatal check on bogus display modes coming from hdmi
 # instead SurfaceFlinger will restart if hdmi is plugged
 # turning monitor off and on is not affected by this
