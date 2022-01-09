@@ -14,15 +14,15 @@ https://developer.android.com/studio/releases/platform-tools
 https://github.com/vm03/payload_dumper
 
 -amlogic USB boot utility
-From https://dl.omnirom.org/tmp/yukawa/update or
+From https://dl.omnirom.org/tmp/yukawa/setup/update or
 https://github.com/omnirom/android_device_amlogic_yukawa/tree/android-12.0/bootloader/tools/update
 
 -custom u-boot
-From https://dl.omnirom.org/tmp/yukawa/u-boot_kvim3pro_ab.bin or
+From https://dl.omnirom.org/tmp/yukawa/setup/u-boot_kvim3pro_ab.bin or
 https://github.com/omnirom/android_device_amlogic_yukawa/tree/android-12.0/bootloader/u-boot_kvim3pro_ab.bin
 
 -super-empty.img file
-From https://dl.omnirom.org/tmp/yukawa/super-empty.img
+From https://dl.omnirom.org/tmp/yukawa/setup/super-empty.img
 
 -USB keyboard connected to device needed to navigate in fastbootd and recovery
 
@@ -103,12 +103,16 @@ fastboot flash system_a system.img
 fastboot flash vendor_a vendor.img
 (optional also for slot _b)
 
+4) format userdata partition
+
+method 1:
+fastboot format userdata
+
+method 2:
 fastboot reboot recovery (or "Enter recovery" from menu)
 
-Device will change into recovery mode - no more fastboot mode but you can use adb if you have to
-
-4) Format userdata partition
-"Wipe data/factory reset"
+Device will change into recovery mode (no more fastboot mode but you can use adb)
+and select "Wipe data/factory reset"
 
 5) Reboot
 "Reboot system now"
