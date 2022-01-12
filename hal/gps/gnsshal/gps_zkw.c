@@ -1,5 +1,5 @@
 #define LOG_TAG  "gps_zkw"
-#define LOG_NDEBUG 0
+//#define LOG_NDEBUG 0
 
 #include <errno.h>
 #include <pthread.h>
@@ -858,7 +858,13 @@ nmea_reader_parse(NmeaReader* const r)
                 p += snprintf(p, end-p, " time=%s", asctime(&utc));
                 VER(temp);
 #endif
-
+                if (!(r->fix.flags & GPS_LOCATION_HAS_ACCURACY)) {
+                    // never report without accuracy it will crash on service side LocationResult
+                    // that is the same what Location.makeComplete is doing
+                    r->fix.flags   |= GPS_LOCATION_HAS_ACCURACY;
+                    r->fix.accuracy = 100.0f;
+                    DBG("GPS add fake accuracy\n");
+                }
                 callback_backup.location_cb(&r->fix);
                 r->fix.flags = 0;
                 r->location_can_report = 0;
