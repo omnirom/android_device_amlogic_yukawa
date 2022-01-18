@@ -3,3 +3,6 @@ allow vendor_init self:capability { sys_module };
 allow vendor_init kernel:system module_request;
 # GOOGLE(aosp/1496143): default_prop is readable only from coredomain
 #allow vendor_init default_prop:file read;
+
+allow vendor_init proc:file write;
+allow vendor_init vendor_cpufreq_prop:file { getattr map open read };
