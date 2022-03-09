@@ -238,9 +238,8 @@ PRODUCT_PACKAGES += \
 #
 PRODUCT_PACKAGES += \
     hwcomposer.drm_meson \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    android.hardware.drm@1.4-service.clearkey
+    android.hardware.drm-service.widevine \
+    android.hardware.drm-service.clearkey
 
 # CEC
 PRODUCT_PACKAGES += \
