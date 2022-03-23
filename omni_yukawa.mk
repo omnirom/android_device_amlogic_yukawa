@@ -110,6 +110,10 @@ PRODUCT_PACKAGES += \
     gpio \
     adxl345
 
+PRODUCT_PACKAGES += \
+    androidx.window.extensions \
+    androidx.window.sidecar
+    
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
 #PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
 #PRODUCT_PACKAGES += \
