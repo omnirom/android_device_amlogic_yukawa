@@ -114,6 +114,9 @@ PRODUCT_PACKAGES += \
     androidx.window.extensions \
     androidx.window.sidecar
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.system.yukawa.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.yukawa.rc
+
 # for bringup to disable secure adb - copy adbkey.pub from ~/.android
 #PRODUCT_ADB_KEYS := device/amlogic/yukawa/adbkey.pub
 #PRODUCT_PACKAGES += \
