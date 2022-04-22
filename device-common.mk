@@ -362,8 +362,7 @@ PRODUCT_COPY_FILES += \
 
 
 # Light HAL
-#PRODUCT_PACKAGES += \
-    android.hardware.light-service \
+PRODUCT_PACKAGES += \
     lights-yukawa
 
 # Enable USB Camera
