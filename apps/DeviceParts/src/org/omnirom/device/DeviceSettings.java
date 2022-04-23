@@ -17,6 +17,7 @@
 */
 package org.omnirom.device;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.Intent;
@@ -30,12 +31,10 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.view.Display;
+import android.view.Display.Mode;
 import android.view.View;
-import android.view.IWindowManager;
 import android.view.Surface;
 import android.util.Log;
-
-import com.android.internal.view.RotationPolicy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,18 +50,18 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String CPU_SYSFS_GOVERNORS = "/sys/devices/system/cpu/cpu2/cpufreq/scaling_available_governors";
     private static final String CPU_SYSFS_GOVERNOR = "/sys/devices/system/cpu/cpu2/cpufreq/scaling_governor";
 
-    private IWindowManager mWindowManager;
     private ListPreference mRotationLock;
     private ListPreference mBootMode;
     private ListPreference mAudioCard;
     private ListPreference mCPUGovernor;
     private ListPreference mCPUMaxFreq;
+    // 0 landscape 1 portrait
+    private int mNativeOrientation;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
-        mWindowManager = IWindowManager.Stub.asInterface(
-                ServiceManager.getService(Context.WINDOW_SERVICE));
+
         mRotationLock = (ListPreference) findPreference(KEY_ROTATION_LOCK);
         mRotationLock.setOnPreferenceChangeListener(this);
         mRotationLock.setSummary(mRotationLock.getEntry());
@@ -75,6 +74,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mCPUGovernor.setValue(governor);
             mCPUGovernor.setSummary(mCPUGovernor.getEntry());
         }
+
+        Display.Mode mode = getActivity().getDisplay().getMode();
+        mNativeOrientation = mode.getPhysicalWidth() > mode.getPhysicalHeight() ? 0 : 1;
     }
 
     @Override
@@ -87,37 +89,28 @@ public class DeviceSettings extends PreferenceFragment implements
         if (preference == mRotationLock) {
             String value = (String) newValue;
             int rotationLockValue = Integer.valueOf(value);
-            try {
-                if (rotationLockValue == 0) {
-                    mWindowManager.thawRotation();
-                    mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, 0);
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.ACCELEROMETER_ROTATION, 0);
-                } else if (rotationLockValue == 1) {
-                    mWindowManager.freezeRotation(Surface.ROTATION_0);
-                    mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, 2);
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.ACCELEROMETER_ROTATION, 1);
-                } else if (rotationLockValue == 2) {
-                    mWindowManager.freezeRotation(Surface.ROTATION_270);
-                    mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, 2);
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.ACCELEROMETER_ROTATION, 1);
-                } else if (rotationLockValue == 3) {
-                    mWindowManager.freezeRotation(Surface.ROTATION_90);
-                    mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, 2);
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.ACCELEROMETER_ROTATION, 1);
-                } else if (rotationLockValue == 4) {
-                    mWindowManager.freezeRotation(Surface.ROTATION_180);
-                    mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, 2);
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.ACCELEROMETER_ROTATION, 1);
-                }
-                mRotationLock.setSummary(mRotationLock.getEntries()[rotationLockValue]);
-            } catch (RemoteException e){
-                Log.e(TAG, "freezeRotation", e);
+            int accelerometerRotation = 0;
+            int userRotation = 0;
+            if (rotationLockValue == 0) {
+                accelerometerRotation = 0;
+                userRotation = Surface.ROTATION_0;
+            } else if (rotationLockValue == 1) {
+                accelerometerRotation = 1;
+                userRotation = mNativeOrientation == 0 ? Surface.ROTATION_0 : Surface.ROTATION_270;
+            } else if (rotationLockValue == 2) {
+                accelerometerRotation = 1;
+                userRotation = mNativeOrientation == 0 ? Surface.ROTATION_270 : Surface.ROTATION_0;
+            } else if (rotationLockValue == 3) {
+                accelerometerRotation = 1;
+                userRotation = mNativeOrientation == 0 ? Surface.ROTATION_90 : Surface.ROTATION_180;
+            } else if (rotationLockValue == 4) {
+                accelerometerRotation = 1;
+                userRotation = mNativeOrientation == 0 ? Surface.ROTATION_180 : Surface.ROTATION_90;
             }
+            final ContentResolver res = getActivity().getContentResolver();
+            Settings.System.putInt(res, Settings.System.ACCELEROMETER_ROTATION, accelerometerRotation);
+            Settings.System.putInt(res, Settings.System.USER_ROTATION, userRotation);
+            mRotationLock.setSummary(mRotationLock.getEntries()[rotationLockValue]);
         } else if (preference == mCPUGovernor) {
             String value = (String) newValue;
             SystemProperties.set(CPU_GOVERNOR_PROPERTY, value);
