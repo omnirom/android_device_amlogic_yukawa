@@ -120,10 +120,6 @@ public class DeviceSettings extends PreferenceFragment implements
             } catch (RemoteException e){
                 Log.e(TAG, "freezeRotation", e);
             }
-            final ContentResolver res = getActivity().getContentResolver();
-            Settings.System.putInt(res, Settings.System.ACCELEROMETER_ROTATION, accelerometerRotation);
-            Settings.System.putInt(res, Settings.System.USER_ROTATION, userRotation);
-            mRotationLock.setSummary(mRotationLock.getEntries()[rotationLockValue]);
         } else if (preference == mCPUGovernor) {
             String value = (String) newValue;
             SystemProperties.set(CPU_GOVERNOR_PROPERTY, value);
