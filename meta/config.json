@@ -4,5 +4,6 @@
     "make": "Khadas",
     "image": "meta/device_image.jpg",
     "state": "unofficial",
-    "device": "yukawa"
+    "device": "yukawa",
+    "readme": "https://dl.omnirom.org/tmp/yukawa/README.txt"
 }
