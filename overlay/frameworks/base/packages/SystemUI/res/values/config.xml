@@ -39,7 +39,7 @@
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
-        internet,bt,dnd,alarm,airplane,controls,screenrecord,mictoggle,cameratoggle,location,hotspot,inversion,dark,work,night,cast
+        internet,bt,dnd,alarm,airplane,controls,screenrecord,mictoggle,location,hotspot,inversion,dark,work,night,cast
     </string>
 
     <!-- tiles that should NEVER end up in qs -->
