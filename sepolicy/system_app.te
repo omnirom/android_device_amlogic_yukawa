@@ -1,2 +1,3 @@
 allow system_app selinuxfs:file r_file_perms;
 set_prop(system_app, vendor_cpufreq_prop);
+allow system_app uhid_device:chr_file rw_file_perms;
