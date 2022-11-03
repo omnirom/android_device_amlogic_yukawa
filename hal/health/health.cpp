@@ -21,6 +21,7 @@
 #include <android-base/logging.h>
 #include <health/utils.h>
 #include <health2impl/Health.h>
+#include <cutils/properties.h>
 
 using ::android::sp;
 using ::android::hardware::Return;
@@ -42,6 +43,9 @@ namespace implementation {
 // should not insert these fake values. For example, a battery-less device should report
 // batteryPresent = false and batteryStatus = UNKNOWN.
 
+#define FAKE_BATTERY_CAPACITY 42
+#define FAKE_BATTERY_TEMPERATURE 424
+
 class HealthImpl : public Health {
  public:
   HealthImpl(std::unique_ptr<healthd_config>&& config)
@@ -54,6 +58,16 @@ void HealthImpl::UpdateHealthInfo(HealthInfo* health_info) {
   auto* battery_props = &health_info->legacy.legacy;
   battery_props->batteryStatus = BatteryStatus::UNKNOWN;
   battery_props->batteryPresent = false;
+
+  char property[PROPERTY_VALUE_MAX] = {0};
+  if (property_get("persist.vendor.fake_battery", property, NULL)) {
+    if (strcmp(property, "1") == 0) {
+      battery_props->batteryPresent = true;
+      battery_props->batteryTemperature = FAKE_BATTERY_TEMPERATURE;
+      battery_props->batteryLevel = FAKE_BATTERY_CAPACITY;
+      battery_props->batteryStatus = BatteryStatus::DISCHARGING;
+    }
+  }
 }
 
 }  // namespace implementation
