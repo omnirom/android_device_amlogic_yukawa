@@ -83,6 +83,9 @@ PRODUCT_PACKAGES += \
     DeviceRegistration
 endif
 
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # widevine
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/binaries/drm/vendor/lib/mediadrm/libwvdrmengine.so:$(TARGET_COPY_OUT_VENDOR)/lib/mediadrm/libwvdrmengine.so \
@@ -93,9 +96,9 @@ PRODUCT_COPY_FILES += \
 
 # Keep the VNDK APEX in /system partition for REL branches as these branches are
 # expected to have stable API/ABI surfaces.
-ifneq (REL,$(PLATFORM_VERSION_CODENAME))
+#ifneq (REL,$(PLATFORM_VERSION_CODENAME))
   PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
-endif
+#endif
 
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service
