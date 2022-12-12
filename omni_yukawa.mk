@@ -75,8 +75,7 @@ PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
 # Additional apps
 PRODUCT_PACKAGES += \
     DeviceParts \
-    OmniProvision \
-    Terminal
+    OmniProvision
 
 ifeq ($(ROM_BUILDTYPE),GAPPS)
 PRODUCT_PACKAGES += \
