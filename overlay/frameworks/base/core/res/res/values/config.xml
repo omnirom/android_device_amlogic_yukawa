@@ -212,4 +212,8 @@
          picture-in-picture windows. Regardless of the percent set here, calculated size will never
          be smaller than @dimen/default_minimal_size_pip_resizable_task. -->
     <item name="config_pictureInPictureDefaultSizePercent" format="float" type="dimen">0.25</item>
+    
+     <!-- The type of the light sensor to be used by the display framework for things like
+         auto-brightness. If unset, then it just gets the default sensor of type TYPE_LIGHT. -->
+    <string name="config_displayLightSensorType" translatable="false" />
 </resources>
