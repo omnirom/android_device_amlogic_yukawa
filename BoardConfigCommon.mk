@@ -125,7 +125,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_FLAGS="-@"
 TARGET_KERNEL_ADDITIONAL_FLAGS += LLVM=1
-TARGET_KERNEL_CLANG_VERSION := r416183b
+#TARGET_KERNEL_CLANG_VERSION := r416183b
 
 # Use Gnu AS until we can switch to LLVM_IAS=1
 KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gas/$(HOST_PREBUILT_TAG)
@@ -195,7 +195,7 @@ DEVICE_MANIFEST_FILE += device/amlogic/yukawa/sensorhal/manifest.xml
 endif
 
 # Generate an APEX image for experiment b/119800099.
-#DEXPREOPT_GENERATE_APEX_IMAGE := true
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # additions
 
