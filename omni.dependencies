@@ -3,12 +3,19 @@
     "remote": "aosp",
     "repository": "kernel/hikey-linaro",
     "target_path": "kernel/amlogic/yukawa",
-    "revision": "android-amlogic-bmeson-5.15"
+    "revision": "android-amlogic-bmeson-6.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_packages_apps_DeviceRegistration",
     "target_path": "packages/apps/DeviceRegistration",
     "revision": "android-12.0"
+  },
+  {
+    "remote": "omnirom",
+    "override": "platform/bootable/recovery",
+    "repository": "android_bootable_recovery",
+    "target_path": "bootable/recovery",
+    "revision": "android-14.0"
   }
 ]
