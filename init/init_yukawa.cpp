@@ -92,7 +92,7 @@ void vendor_load_properties()
 
     set_gps_device_property();
 
-    property_override("ro.boot.verifiedbootstate", "green");
+    //property_override("ro.boot.verifiedbootstate", "green");
 }
 }
 }
