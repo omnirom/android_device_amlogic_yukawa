@@ -45,13 +45,21 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=conservative
 #PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
     vendor.hwc.drm.scale_with_gpu=1
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196610
+# graphics
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.hardware.egl=mali
 
-# prevent surfaceflinger fatal check on bogus display modes coming from hdmi
-# instead SurfaceFlinger will restart if hdmi is plugged
-# turning monitor off and on is not affected by this
-PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_display_mode_check=1
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.hardware.vulkan=mali
+
+# Configure EGL blobcache
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.egl.blobcache.multifile=true \
+    ro.egl.blobcache.multifile_limit=33554432 \
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.opengles.version=196610 \
+    debug.renderengine.backend=skiaglthreaded
     
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.wificountrycode=00
