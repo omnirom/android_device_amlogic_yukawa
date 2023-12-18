@@ -39,11 +39,7 @@ PRODUCT_COPY_FILES +=  \
     frameworks/native/data/etc/tablet_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/tablet_core_hardware.xml
 
 # just set a default
-PRODUCT_PROPERTY_OVERRIDES += persist.vendor.cpufreq.governor=conservative
-
-# just here as reference
-#PRODUCT_PROPERTY_OVERRIDES += debug.sf.disable_hwc_overlays=1 \
-    vendor.hwc.drm.scale_with_gpu=1
+PRODUCT_VENDOR_PROPERTIES += persist.vendor.cpufreq.governor=conservative
 
 # graphics
 PRODUCT_VENDOR_PROPERTIES += \
@@ -62,7 +58,15 @@ PRODUCT_VENDOR_PROPERTIES += \
     debug.renderengine.backend=skiaglthreaded
     
 # Wifi
-PRODUCT_PROPERTY_OVERRIDES += ro.boot.wificountrycode=00
+PRODUCT_VENDOR_PROPERTIES += ro.boot.wificountrycode=00
+
+PRODUCT_VENDOR_PROPERTIES += gps.device.path=/dev/ttyACM0
+
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.hwc.drm.ctm=DRM_OR_IGNORE
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.lockscreen.disable.default=true
 
 # gps
 PRODUCT_PACKAGES += \
@@ -74,15 +78,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     gps.yukawa
-
-PRODUCT_PROPERTY_OVERRIDES += gps.device.path=/dev/ttyACM0
-
-PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
-    ro.surface_flinger.has_wide_color_display=false \
-    ro.surface_flinger.has_HDR_display=false
-
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.hwc.drm.ctm=DRM_OR_IGNORE
 
 # Additional apps
 PRODUCT_PACKAGES += \
