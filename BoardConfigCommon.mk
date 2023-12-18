@@ -194,7 +194,7 @@ DEVICE_MANIFEST_FILE += device/amlogic/yukawa/sensorhal/manifest.xml
 endif
 
 # Generate an APEX image for experiment b/119800099.
-DEXPREOPT_GENERATE_APEX_IMAGE := true
+#DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # additions
 

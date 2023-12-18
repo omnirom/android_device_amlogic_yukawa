@@ -81,6 +81,9 @@ PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=false \
     ro.surface_flinger.has_wide_color_display=false \
     ro.surface_flinger.has_HDR_display=false
 
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.hwc.drm.ctm=DRM_OR_IGNORE
+
 # Additional apps
 PRODUCT_PACKAGES += \
     DeviceParts \
