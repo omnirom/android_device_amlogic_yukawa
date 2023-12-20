@@ -14,7 +14,8 @@ ifndef TARGET_AVB_ENABLE
 TARGET_AVB_ENABLE := true
 endif
 
-TARGET_BUILD_KERNEL := true
+#TARGET_BUILD_KERNEL := true
+TARGET_KERNEL_USE := 5.15
 
 # Inherit the full_base and device configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -117,7 +118,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.1-service.yukawa
 
 # WiringPi
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     gpio \
     adxl345
 

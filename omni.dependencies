@@ -1,9 +1,8 @@
 [
   {
     "remote": "aosp",
-    "repository": "kernel/hikey-linaro",
-    "target_path": "kernel/amlogic/yukawa",
-    "revision": "android-amlogic-bmeson-5.15"
+    "repository": "device/amlogic/yukawa-kernel",
+    "target_path": "device/device/device"
   },
   {
     "remote": "omnirom",
