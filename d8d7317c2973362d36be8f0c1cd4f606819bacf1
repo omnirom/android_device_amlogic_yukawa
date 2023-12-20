@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7810ce0_841fb2f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-12-20T19:39:53Z",
+      "side": 1,
+      "message": "Do you have the TARGET_PREBUILT_KERNEL flag set in your dt ?",
+      "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    }
+  ]
+}
