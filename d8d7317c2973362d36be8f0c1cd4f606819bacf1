@@ -16,6 +16,41 @@
       "message": "Do you have the TARGET_PREBUILT_KERNEL flag set in your dt ?",
       "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
       "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ef65ee_0fd916f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2023-12-21T10:05:28Z",
+      "side": 1,
+      "message": "No not needed. Using aosp stock way. Our stuff is not involved",
+      "parentUuid": "a7810ce0_841fb2f6",
+      "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d2ebdf_711b0236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2023-12-21T10:05:28Z",
+      "side": 1,
+      "message": "See TARGET_USES_KERNEL_PLATFORM",
+      "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
     }
   ]
 }
