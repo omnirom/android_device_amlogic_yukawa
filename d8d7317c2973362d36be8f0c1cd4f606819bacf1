@@ -51,6 +51,24 @@
       "message": "See TARGET_USES_KERNEL_PLATFORM",
       "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
       "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e2b0d8_27983aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-12-21T11:22:43Z",
+      "side": 1,
+      "message": "yep, that\u0027s why I\u0027ve changed this\nhttps://gerrit.omnirom.org/c/android_build/+/639/1\n\nis it possible to test this topic and see if you have an pb with soong please ?\nthx :)",
+      "parentUuid": "81d2ebdf_711b0236",
+      "revId": "d8d7317c2973362d36be8f0c1cd4f606819bacf1",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
     }
   ]
 }
