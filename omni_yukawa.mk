@@ -16,6 +16,8 @@ endif
 
 #TARGET_BUILD_KERNEL := true
 TARGET_KERNEL_USE := 5.15
+TARGET_PREBUILT_KERNEL := device/amlogic/yukawa-kernel/$(TARGET_KERNEL_USE)/Image.lz4
+TARGET_USES_KERNEL_PLATFORM := true
 
 # Inherit the full_base and device configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -57,7 +59,18 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.opengles.version=196610 \
     debug.renderengine.backend=skiaglthreaded
-    
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.c2-poolmask=458752 \
+    debug.c2.use_dmabufheaps=1 \
+    media.c2.dmabuf.padding=512 \
+    debug.stagefright.ccodec_delayed_params=1 \
+    ro.vendor.gpu.dataspace=1
+
+# Create input surface on the framework side
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.c2inputsurface=-1 \
+
 # Wifi
 PRODUCT_VENDOR_PROPERTIES += ro.boot.wificountrycode=00
 
