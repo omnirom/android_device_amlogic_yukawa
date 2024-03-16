@@ -49,6 +49,4 @@ cc_library_shared {
         "android.hardware.health@2.0",
         "android.hardware.health@2.1",
     ],
-
-    defaults: ["enabled_on_p_and_later"],
 }
