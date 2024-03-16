@@ -96,24 +96,24 @@ public class DeviceSettings extends PreferenceFragmentCompat implements
 
             try {
                 if (rotationLockValue == 0) {
-                    mWindowManager.freezeRotation(Surface.ROTATION_0);
+                    mWindowManager.freezeRotation(Surface.ROTATION_0,"DeviceSettings");
                     mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, IWindowManager.FIXED_TO_USER_ROTATION_DEFAULT);
-                    mWindowManager.thawRotation();
+                    mWindowManager.thawRotation("DeviceSettings");
                 } else if (rotationLockValue == 1) {
                     userRotation = mNativeOrientation == 0 ? Surface.ROTATION_0 : Surface.ROTATION_90;
-                    mWindowManager.freezeRotation(userRotation);
+                    mWindowManager.freezeRotation(userRotation,"DeviceSettings");
                     mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, IWindowManager.FIXED_TO_USER_ROTATION_ENABLED);
                 } else if (rotationLockValue == 2) {
                     userRotation = mNativeOrientation == 0 ? Surface.ROTATION_270 : Surface.ROTATION_0;
-                    mWindowManager.freezeRotation(userRotation);
+                    mWindowManager.freezeRotation(userRotation,"DeviceSettings");
                     mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, IWindowManager.FIXED_TO_USER_ROTATION_ENABLED);
                 } else if (rotationLockValue == 3) {
                     userRotation = mNativeOrientation == 0 ? Surface.ROTATION_90 : Surface.ROTATION_180;
-                    mWindowManager.freezeRotation(userRotation);
+                    mWindowManager.freezeRotation(userRotation,"DeviceSettings");
                     mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, IWindowManager.FIXED_TO_USER_ROTATION_ENABLED);
                 } else if (rotationLockValue == 4) {
                     userRotation = mNativeOrientation == 0 ? Surface.ROTATION_180 : Surface.ROTATION_270;
-                    mWindowManager.freezeRotation(userRotation);
+                    mWindowManager.freezeRotation(userRotation,"DeviceSettings");
                     mWindowManager.setFixedToUserRotation(Display.DEFAULT_DISPLAY, IWindowManager.FIXED_TO_USER_ROTATION_ENABLED);
                 }
                 mRotationLock.setSummary(mRotationLock.getEntries()[rotationLockValue]);
