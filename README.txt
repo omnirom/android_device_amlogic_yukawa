@@ -18,8 +18,12 @@ From https://dl.omnirom.org/tmp/yukawa/setup/update or
 https://github.com/omnirom/android_device_amlogic_yukawa/tree/android-12.0/bootloader/tools/update
 
 -custom u-boot
-From https://dl.omnirom.org/tmp/yukawa/setup/u-boot_kvim3pro_ab.bin or
-https://github.com/omnirom/android_device_amlogic_yukawa/tree/android-12.0/bootloader/u-boot_kvim3pro_ab.bin
+IMPORTANT!
+For builds AFTER omni-14-20240311 you MUST update your bootloader from an older version!
+This means a clean install. For how to update see below in the section "Flash custom u-boot"
+ 
+From https://dl.omnirom.org/tmp/yukawa/setup/u-boot_kvim3pro_ab_20240317.bin or
+https://github.com/omnirom/android_device_amlogic_yukawa/tree/android-14.0/bootloader/u-boot_kvim3pro_ab_20240317.bin
 
 -super-empty.img file
 From https://dl.omnirom.org/tmp/yukawa/setup/super-empty.img
@@ -64,18 +68,20 @@ Flash custom u-boot
 
 see also https://gitlab.com/baylibre/amlogic/atv/aosp/device/amlogic/yukawa/-/wikis/Khadas_VIM3#flash-android-bootloader
 
-update write u-boot_kvim3pro_ab.bin 0xfffa0000 0x10000
+If you DONT already use older version custom u-boot:
+
+update write u-boot_kvim3pro_ab_20240317.bin 0xfffa0000 0x10000
 update run 0xfffa0000
-update bl2_boot u-boot_kvim3pro_ab.bin
+update bl2_boot u-boot_kvim3pro_ab_20240317.bin
 
 device will reboot into bootloader fastboot mode
 
-fastboot oem format
-fastboot flash bootloader u-boot_kvim3pro_ab.bin
+If you already use an older version of custom u-boot you only need these steps:
+
+fastboot flash bootloader u-boot_kvim3pro_ab_20240317.bin
 fastboot erase bootenv
 fastboot reboot bootloader
-
-unplug and plug power cable or use reset button - device will reboot into fastboot again
+fastboot oem format
 
 Flash images
 ------------
